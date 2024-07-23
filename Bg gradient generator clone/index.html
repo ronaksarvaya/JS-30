@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Bg gradient Generator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: linear-gradient(to right top, #9b9797,#9b9797);
+      }
+      main {
+        /* border: 1px solid; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        margin: 0 10px;
+      }
+      
+      .buttons {
+          display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin: 10px;
+    }
+    .para {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid ;
+    }
+    .para:active{
+        transform:translateY(3px) ;
+    }
+    .buttons button {
+        /* border: none; */
+          border: 1px solid black;
+          margin: 0 10px;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 18px;
+        width: 100px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 5px #999;
+      }
+      #mybtn1,#mybtn2{background-color: #9b9797;}
+    
+      button:hover {
+        background-color: #3e8e41;
+      }
+
+      button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        /* transform: translateY(4px); */
+      }
+      .code {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        max-width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="buttons">
+        <button id="mybtn1">#9b9797</button>
+        <button id="mybtn2">#9b9797</button>
+      </div>
+      <div class="para">Click me to copy code</div>
+      <div class="code"> background-image: linear-gradient(to right top, #9b9797,#9b9797);</div>
+    </main>
+  </body>
+  <script>
+      let mybtn1 = document.getElementById("mybtn1")
+      let mybtn2 = document.getElementById("mybtn2")
+      let body=document.querySelector("body") 
+      let rgb1="#9b9797";
+      let rgb2="#9b9797";
+      let gradCode=document.querySelector(".code")
+      
+    
+    const colorgen1 = () => {
+        let colorHexCode="#"
+        let HexVals="0123456789abcdef"
+        for(let i = 0;i<6;i++){
+            colorHexCode += HexVals[Math.floor(Math.random()*16)]
+            // return colorHexCode
+        }
+        rgb1=colorHexCode;
+        mybtn1.innerHTML=rgb1;
+        body.style.backgroundImage=`linear-gradient(to right top, ${rgb1},${rgb2})`
+        mybtn1.style.backgroundColor=`${rgb1}`;
+        gradCode.innerHTML=` background-image: linear-gradient(to right top, ${rgb1},${rgb2})`
+        
+        
+        
+        
+    }
+    const colorgen2 = () => {
+        let colorHexCode="#"
+        let HexVals="0123456789abcdef"
+        for(let i = 0;i<6;i++){
+            colorHexCode += HexVals[Math.floor(Math.random()*16)]
+            // return colorHexCode
+        }
+        
+        rgb2=colorHexCode;      
+        mybtn2.innerHTML=rgb2;
+        body.style.backgroundImage=`linear-gradient(to right top, ${rgb1},${rgb2})`
+        mybtn2.style.backgroundColor=`${rgb2}`
+        gradCode.innerHTML=` background-image: linear-gradient(to right top, ${rgb1},${rgb2})`
+        
+    }
+  
+    mybtn1.addEventListener("click",colorgen1)
+  
+    mybtn2.addEventListener("click",colorgen2)
+   
+    body.style.backgroundImage=`linear-gradient(to right top, ${rgb1},${rgb2})`
+    const copyButton = document.querySelector('.para');
+    copyButton.addEventListener("click",()=>{
+        navigator.clipboard.writeText(gradCode.textContent)
+        alert("Code copied to clipboard successfully")
+    })
+     
+  </script>
+</html>

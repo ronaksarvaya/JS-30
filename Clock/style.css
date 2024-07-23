@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-color: rgb(42, 41, 41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+main{
+    font-size: 2.5rem;
+    border: 1px solid rgb(255, 255, 0);
+    min-width: 300px;
+    height: auto;
+    min-height: 100px;
+    border-bottom-width: thick;
+    box-shadow: 0px 5px 16px goldenrod;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+#time{
+    display: flex;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="time" class="time">0</div>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button >Reset</button>
+            <button id="stop">Stop</button>
+            <button>get Time</button>
+            <button>clear Time</button>
+        </div>
+    </main>
+</body>
+<script>
+let initial=0
+let mainTime=document.getElementById("time")
+let startbtn=document.getElementById("start")
+let stopbtn=document.getElementById("stop")
+let startId=0;
+let startFun=()=>{
+    startId=setInterval(()=>{
+        initial++;
+    mainTime.innerHTML=initial;
+    },1000)
+}
+let stopFun=()=>{
+   clearInterval(startId)
+}
+
+startbtn.addEventListener("click",startFun)
+
+stopbtn.addEventListener("click",stopFun)
+</script>
+</html>
