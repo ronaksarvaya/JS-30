@@ -11,31 +11,62 @@
         <div id="time" class="time">0</div>
         <div class="buttons">
             <button id="start">Start</button>
-            <button >Reset</button>
+            <button id="reset">Reset</button>
             <button id="stop">Stop</button>
-            <button>get Time</button>
-            <button>clear Time</button>
+            <button id="getTimebtn">get Time</button>
+            <button id="clr">clear Time</button>
         </div>
+        <div id="getTimediv"></div>
     </main>
 </body>
 <script>
-let initial=0
+let initial=0;
+let index=1
 let mainTime=document.getElementById("time")
 let startbtn=document.getElementById("start")
 let stopbtn=document.getElementById("stop")
+let resetbtn=document.getElementById("reset")
+let getTimebtn=document.getElementById("getTimebtn")
+let getTimediv=document.getElementById("getTimediv")
+let clr=document.getElementById("clr")
 let startId=0;
+let isRunning=false;
 let startFun=()=>{
-    startId=setInterval(()=>{
-        initial++;
-    mainTime.innerHTML=initial;
-    },1000)
+   
+    if (!isRunning) {  // Only start if the timer is not already running
+        startId = setInterval(() => {
+            initial++;
+            mainTime.innerHTML = initial;
+        }, 1000);
+        isRunning = true;
+    }
+
+    
+
 }
 let stopFun=()=>{
    clearInterval(startId)
+ isRunning=false
+}
+let resetFun=()=>{
+    initial=0;
+    mainTime.innerHTML=initial;
+}
+let getTime=()=>{
+   let p = document.createElement("p")
+   p.innerHTML=`${index}.${initial}`
+   index++
+   getTimediv.append(p)
+}
+let clrFun=()=>{
+    getTimediv.innerHTML="";
+    index=1
 }
 
 startbtn.addEventListener("click",startFun)
-
 stopbtn.addEventListener("click",stopFun)
+resetbtn.addEventListener("click",resetFun)
+getTimebtn.addEventListener("click",getTime)
+clr.addEventListener("click",clrFun)
 </script>
 </html>
