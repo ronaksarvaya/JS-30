@@ -1,72 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stopwatch</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <main>
-        <div id="time" class="time">0</div>
-        <div class="buttons">
-            <button id="start">Start</button>
-            <button id="reset">Reset</button>
-            <button id="stop">Stop</button>
-            <button id="getTimebtn">get Time</button>
-            <button id="clr">clear Time</button>
-        </div>
-        <div id="getTimediv"></div>
+      <div id="time" class="time"></div>
+      <div class="buttons">
+        <button id="start">Start</button>
+        <button id="reset">Reset</button>
+        <button id="stop">Stop</button>
+        <button id="getTimebtn">get Time</button>
+        <button id="clr">clear Time</button>
+      </div>
+      <div id="getTimediv"></div>
     </main>
-</body>
-<script>
-let initial=0;
-let index=1
-let mainTime=document.getElementById("time")
-let startbtn=document.getElementById("start")
-let stopbtn=document.getElementById("stop")
-let resetbtn=document.getElementById("reset")
-let getTimebtn=document.getElementById("getTimebtn")
-let getTimediv=document.getElementById("getTimediv")
-let clr=document.getElementById("clr")
-let startId=0;
-let isRunning=false;
-let startFun=()=>{
-   
-    if (!isRunning) {  // Only start if the timer is not already running
-        startId = setInterval(() => {
-            initial++;
-            mainTime.innerHTML = initial;
-        }, 1000);
-        isRunning = true;
+  </body>
+  <script>
+    const myTime= new Date()
+    myTime.setHours(0,0,0,0)
+    //syntax by gpt
+    /*
+    myTime.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });*/
+    let mainTime=document.getElementById("time")
+   let myTimeStr=()=>{/*I feel like Light yagami after coming up with the logic of using function and return keyword*/ return myTime.toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });}
+    mainTime.innerHTML=myTimeStr()
+
+    let startbtn=document.getElementById("start")
+    let stopbtn=document.getElementById("stop")
+    let resetbtn=document.getElementById("reset")
+    let getTimebtn=document.getElementById("getTimebtn")
+    let getTimediv=document.getElementById("getTimediv")
+    let clr=document.getElementById("clr")
+    let startId=0;
+    let isRunning=false;
+    let x =new Date()
+    x.getHours
+
+    // mainTime.innerHTML=myTime.toTimeString().split(" ")[0]
+    // mainTime.innerHTML=myTime.getHours()
+    let startFun=()=>{
+
+        if (!isRunning) {  // Only start if the timer is not already running
+            startId = setInterval(() => {
+                myTime.setSeconds(myTime.getSeconds()+1)
+                mainTime.innerHTML =myTimeStr()
+                console.log(initial.getTime);
+            }, 1000);
+            isRunning = true;
+        }
+
+
+
+    }
+    let stopFun=()=>{
+       clearInterval(startId)
+     isRunning=false
+    }
+    let resetFun=()=>{
+        stopFun()
+        myTime.setHours(0,0,0,0)
+        mainTime.innerHTML=myTimeStr()
+    }
+    let gettime=()=>{
+       let p = document.createElement("p")
+       p.innerHTML=myTimeStr();
+       console.log("runs gett")
+       getTimediv.append(p)
+    }
+    let clrFun=()=>{
+        getTimediv.innerHTML="";
+        index=1
     }
 
-    
-
-}
-let stopFun=()=>{
-   clearInterval(startId)
- isRunning=false
-}
-let resetFun=()=>{
-    initial=0;
-    mainTime.innerHTML=initial;
-}
-let getTime=()=>{
-   let p = document.createElement("p")
-   p.innerHTML=`${index}.${initial}`
-   index++
-   getTimediv.append(p)
-}
-let clrFun=()=>{
-    getTimediv.innerHTML="";
-    index=1
-}
-
-startbtn.addEventListener("click",startFun)
-stopbtn.addEventListener("click",stopFun)
-resetbtn.addEventListener("click",resetFun)
-getTimebtn.addEventListener("click",getTime)
-clr.addEventListener("click",clrFun)
-</script>
+    startbtn.addEventListener("click",startFun)
+    stopbtn.addEventListener("click",stopFun)
+    resetbtn.addEventListener("click",resetFun)
+    getTimebtn.addEventListener("click",gettime)
+    clr.addEventListener("click",clrFun)
+  </script>
 </html>
