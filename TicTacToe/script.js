@@ -35,7 +35,8 @@ boxes.forEach(
                 Xturn=true;
                 box.disabled=true
                
-            }winCheck()
+            }
+            winCheck()
 
           
         })
@@ -52,7 +53,7 @@ function winCheck(){
          pos3=boxes[pattern[2]].innerText
 
          if(pos1!=""&&pos2!=""&&pos3!=""){
-            if(pos1===pos2 && pos2===pos3){
+            if(pos1===pos2 && pos2===pos3 && pos1===pos3){
                 msg.innerText=`${pos1} won`
                 boxes.forEach(
                     (box)=>{
