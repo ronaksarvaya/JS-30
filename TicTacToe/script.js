@@ -59,6 +59,9 @@ function winCheck(){
                         box.disabled=true;})
                         
                     }
+            else{
+                msg.innerText=`Draw`
+            }
                 }
                 
         
