@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+/*temp classes*/
+/* .green{background-color: green;}
+.pink{background-color: pink;}
+.red{background-color: red;}
+.yellow{background-color: yellow;}
+.white{background-color: white;}
+.cyan{background-color: cyan;} */
+
+
+
+/*main*/
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    /* background-color: yellow; */
+    height: 400px;
+    width: 500px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+
+}
+.circle{
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid black; */
+    border-radius: 50%;
+}
+
+.scoreboard{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.score{
+    height: 100%;
+    width: 100%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 150%;
+}
+
+.show{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.display-move{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+
+    font-size: 300%;
+    color: red;
+}
+#computer{
+    height: 100%;
+    width: 50%;
+}
+#user{
+    height: 100%;
+    width: 50%;
+}
+
+.select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+}
+.buttons{
+    font-size:300%;
+    height: 50%;
+    width: 25%;
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    border: 1px dotted ;
+    cursor: pointer;
+    
+}
