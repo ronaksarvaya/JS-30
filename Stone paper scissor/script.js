@@ -69,7 +69,19 @@ function winCheck(){
          compCtr=compCtr+1
          computerScoreDisp.innerText=compCtr;
     }
-
+    if(compCtr===10 || userCtr===10){
+        if(compCtr===10){
+            gameInfo.innerText="Comp Won the Match"
+           
+        }
+        else{
+             gameInfo.innerText="Comp Won the Match"
+             
+        }
+        setInterval(() => {
+            resetFn();
+        }, 2000);
+    }
     }
 
 
@@ -78,7 +90,14 @@ function gameDraw(){
     gameInfo.innerText="draw"
     console.log("draw")
 }
-
+let resetFn=()=>{
+    userCtr=0;
+    userScoreDisp.innerText=userCtr
+    compCtr=0;
+    computerScoreDisp.innerText=compCtr;
+    gameInfo.innerText="Choose"
+}
+reset.addEventListener("click",resetFn);
 stoneBTN.addEventListener("click",()=>{
     currUser="stone"
     updateUser.innerHTML=stone;
@@ -93,8 +112,4 @@ scissorBTN.addEventListener("click",()=>{
     currUser="scissor"
     updateUser.innerHTML=scissor;
     compPlays(); logRes(); winCheck();printt()
-})
-reset.addEventListener("click",()=>{
-    userCtr=0;
-    compCtr=0;
 })
